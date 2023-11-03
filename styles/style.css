@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat&display=swap');
+
+:root{
+    --font-montserrat: 'Montserrat', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: auto;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-montserrat);
+    background-color: #222831;
+    flex-direction: column;
+}
+
+.header{
+    padding: 50% 0 50% 0;
+    color: white;
+}
+
+.cards{
+    display: flex;
+    color:white;
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.4);
+    transition: 0.3s;
+    border-radius: 10px;
+    border: 2px transparent black;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.cards:hover {
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.2);
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 20px;
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+}
+
+.icon{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-moon{
+    display: block;
+    color: white;
+    font-size: 50px;
+    text-shadow: 0 0 10px white;
+    transition: .3s;
+    opacity: 1;
+}
+
+.fa-sun{
+    display: block;
+    color: orange;
+    font-size: 50px;
+    text-shadow: 0 0 10px orange;
+    transition: .3s;
+    opacity: 1;
+}
+
+.info-icon{
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info{
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+#imagemDoHorario {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#horarioAtual {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+}
