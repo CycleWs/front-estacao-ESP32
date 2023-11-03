@@ -5,10 +5,11 @@ const windHTML = document.getElementById('velVento')
 const humityHTML = document.getElementById('percUmidade')
 const rainHTML = document.getElementById('chanceChuva')
 const temporalHTML = document.getElementById('temporal')
+const imagemHTML = document.getElementById("imagemHorario")
 
 
 async function getTemporal() {
-    const response = await fetch("http://localhost:3000/weather");
+    const response = await fetch("https://serveruniruy.onrender.com/weather");
     const data = await response.json(); 
     const { description } = data;
     temporalHTML.innerHTML = `${description}`;
@@ -16,6 +17,42 @@ async function getTemporal() {
 
 getTemporal()
 setInterval(getTemporal, 5000)
+
+async function atualizarImagemComBaseNoHorario() {
+    const response = await fetch("https://serveruniruy.onrender.com/weather");
+    const data = await response.json(); 
+    const { condition_slug } = data;
+    switch(condition_slug){
+        case 'tempestade':
+            imagemHTML.classList.add("fa-cloud-bolt")
+            break
+        case 'snow':
+            imagemHTML.classList.add("fa-snowflake")
+            break
+        case 'rain':
+            imagemHTML.classList.add("fa-cloud-rain")
+            break
+        case 'clear_day':
+            imagemHTML.classList.add("fa-sun")
+            break
+        case 'clear_night':
+            imagemHTML.classList.add("fa-moon")
+            break
+        case 'cloud':
+            imagemHTML.classList.add("fa-cloud")
+            break
+        case 'cloudly_day':
+            imagemHTML.classList.add("fa-cloud-sun")
+            break
+        case 'cloudly_night':
+            imagemHTML.classList.add("fa-cloud-moon")
+            break
+    }
+}
+atualizarImagemComBaseNoHorario()
+setInterval(atualizarImagemComBaseNoHorario, 1000)
+
+window.addEventListener("load", atualizarImagemComBaseNoHorario);
 
 async function updateData(){
     const response = await fetch("https://estacao-esp32.onrender.com")
@@ -50,23 +87,6 @@ updateTime()
 setInterval(updateTime, 1000);
 
 
-function atualizarImagemComBaseNoHorario() {
-    const agora = new Date()
-    let hora = agora.getHours()
-    
-    const imagem = document.getElementById("imagemHorario")
-    
-    if (hora >= 6 && hora < 18) {
-        imagem.classList.add("fa-sun")
-        imagem.classList.remove("fa-moon")
-    } else {
-        imagem.classList.add("fa-moon")
-        imagem.classList.remove("fa-sun")
-    }
-}
-atualizarImagemComBaseNoHorario()
-setInterval(atualizarImagemComBaseNoHorario, 1000)
 
-window.addEventListener("load", atualizarImagemComBaseNoHorario);
 
 
