@@ -8,15 +8,14 @@ const temporalHTML = document.getElementById('temporal')
 
 
 async function getTemporal() {
-    const response = await fetch("https://api.hgbrasil.com/weather?key=50f43aa2&woeid=455826&array_limit=2&fields=only_results,description&locale=pt")
-    const data = await response.json();
+    const response = await fetch("http://localhost:3000/weather");
+    const data = await response.json(); 
     const { description } = data;
-    console.log(data);
-    
     temporalHTML.innerHTML = `${description}`;
 }
 
 getTemporal()
+setInterval(getTemporal, 5000)
 
 async function updateData(){
     const response = await fetch("https://estacao-esp32.onrender.com")
