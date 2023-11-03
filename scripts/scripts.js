@@ -1,9 +1,22 @@
 const dias = ["Domingo","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado"]
 
-const temperatureHTML = document.querySelector('#temperatura')
-const windHTML = document.querySelector('#velVento')
-const humityHTML = document.querySelector('#percUmidade')
-const rainHTML = document.querySelector('#chanceChuva')
+const temperatureHTML = document.getElementById('temperatura')
+const windHTML = document.getElementById('velVento')
+const humityHTML = document.getElementById('percUmidade')
+const rainHTML = document.getElementById('chanceChuva')
+const temporalHTML = document.getElementById('temporal')
+
+
+async function getTemporal() {
+    const response = await fetch("https://api.hgbrasil.com/weather?key=50f43aa2&woeid=455826&array_limit=2&fields=only_results,description&locale=pt")
+    const data = await response.json();
+    const { description } = data;
+    console.log(data);
+    
+    temporalHTML.innerHTML = `${description}`;
+}
+
+getTemporal()
 
 async function updateData(){
     const response = await fetch("https://estacao-esp32.onrender.com")
@@ -14,9 +27,9 @@ async function updateData(){
         windHTML.innerHTML = `<i class="fa-solid fa-wind fa-xs"></i>${windspeed.toFixed(2)} km/h`
         humityHTML.innerHTML = `<i class="fa-solid fa-droplet fa-xs"></i>${humity} %`
         rainHTML.innerHTML = `<i class="fa-solid fa-cloud-rain fa-xs"></i>${rainperc.toFixed(2)} %`
-        console.log(data);
+        console.log(data)
       } else {
-        console.error("Erro na requisição:", response.status);
+        console.error("Erro na requisição:", response.status)
       }
 }
 updateData()
@@ -57,6 +70,4 @@ setInterval(atualizarImagemComBaseNoHorario, 1000)
 
 window.addEventListener("load", atualizarImagemComBaseNoHorario);
 
-cardClone.className = cardOriginal.className;
 
-//local.appendChild(cardClone);
