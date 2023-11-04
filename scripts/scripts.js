@@ -16,7 +16,7 @@ async function getTemporal() {
 }
 
 getTemporal()
-setInterval(getTemporal, 5000)
+setInterval(getTemporal, 3600000)
 
 async function atualizarImagemComBaseNoHorario() {
     const response = await fetch("https://serveruniruy.onrender.com/weather");
@@ -51,7 +51,7 @@ async function atualizarImagemComBaseNoHorario() {
     }
 }
 atualizarImagemComBaseNoHorario()
-setInterval(atualizarImagemComBaseNoHorario, 1000000)
+setInterval(atualizarImagemComBaseNoHorario, 3600000)
 
 window.addEventListener("load", atualizarImagemComBaseNoHorario);
 
