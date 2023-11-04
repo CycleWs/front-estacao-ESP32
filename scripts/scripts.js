@@ -22,30 +22,31 @@ async function atualizarImagemComBaseNoHorario() {
     const response = await fetch("https://serveruniruy.onrender.com/weather");
     const data = await response.json(); 
     const { condition_slug } = data;
+    console.log(condition_slug)
     switch(condition_slug){
-        case 'tempestade':
-            imagemHTML.classList.add("fa-cloud-bolt")
+        case 'storm':
+            imagemHTML.classList.add("storm")
             break
         case 'snow':
-            imagemHTML.classList.add("fa-snowflake")
+            imagemHTML.classList.add("snow")
             break
         case 'rain':
-            imagemHTML.classList.add("fa-cloud-rain")
+            imagemHTML.classList.add("rain")
             break
         case 'clear_day':
-            imagemHTML.classList.add("fa-sun")
+            imagemHTML.classList.add("clear_day")
             break
         case 'clear_night':
-            imagemHTML.classList.add("fa-moon")
+            imagemHTML.classList.add("clear_night")
             break
         case 'cloud':
-            imagemHTML.classList.add("fa-cloud")
+            imagemHTML.classList.add("cloud")
             break
         case 'cloudly_day':
-            imagemHTML.classList.add("fa-cloud-sun")
+            imagemHTML.classList.add("cloudly_day")
             break
         case 'cloudly_night':
-            imagemHTML.classList.add("fa-cloud-moon")
+            imagemHTML.classList.add("cloudly_night")
             break
     }
 }
