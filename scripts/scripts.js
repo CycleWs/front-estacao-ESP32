@@ -51,7 +51,7 @@ async function atualizarImagemComBaseNoHorario() {
     }
 }
 atualizarImagemComBaseNoHorario()
-setInterval(atualizarImagemComBaseNoHorario, 1000)
+setInterval(atualizarImagemComBaseNoHorario, 1000000)
 
 window.addEventListener("load", atualizarImagemComBaseNoHorario);
 
