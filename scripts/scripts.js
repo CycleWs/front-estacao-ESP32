@@ -8,17 +8,17 @@ const temporalHTML = document.getElementById('temporal')
 const imagemHTML = document.getElementById("imagemHorario")
 
 
-async function getTemporal() {
+async function getWeather() {
     const response = await fetch("https://serveruniruy.onrender.com/weather");
     const data = await response.json(); 
     const { description } = data;
     temporalHTML.innerHTML = `${description}`;
 }
 
-getTemporal()
-setInterval(getTemporal, 3600000)
+getWeather()
+setInterval(getWeather, 3600000)
 
-async function atualizarImagemComBaseNoHorario() {
+async function updateImageByTime() {
     const response = await fetch("https://serveruniruy.onrender.com/weather");
     const data = await response.json(); 
     const { condition_slug } = data;
@@ -50,10 +50,10 @@ async function atualizarImagemComBaseNoHorario() {
             break
     }
 }
-atualizarImagemComBaseNoHorario()
-setInterval(atualizarImagemComBaseNoHorario, 3600000)
+updateImageByTime()
+setInterval(updateImageByTime, 3600000)
 
-window.addEventListener("load", atualizarImagemComBaseNoHorario);
+window.addEventListener("load", updateImageByTime);
 
 async function updateData(){
     const response = await fetch("https://estacao-esp32.onrender.com")
@@ -86,8 +86,3 @@ function updateTime(){
 }
 updateTime()
 setInterval(updateTime, 1000);
-
-
-
-
-
